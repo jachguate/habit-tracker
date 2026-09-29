@@ -1,0 +1,181 @@
+<!doctype html>
+<!-- SPDX-License-Identifier: MIT — Copyright (c) 2026 Juan Antonio Castillo (jachguate). See LICENSE. -->
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Habit Tracker</title>
+  <meta name="description" content="Create a printable radial habit tracker for any month, in your language. Runs entirely in your browser.">
+  <meta name="theme-color" content="#f4f1ea" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#16181d" media="(prefers-color-scheme: dark)">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="i-gear" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></g></symbol>
+    <symbol id="i-globe" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.6-3.8-9S9.5 5.6 12 3Z"/></g></symbol>
+    <symbol id="i-download" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M12 4v11m0 0-4.5-4.5M12 15l4.5-4.5M5 19.5h14"/></symbol>
+    <symbol id="i-share" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M12 15V3.5m0 0L8 7.5m4-4 4 4M7 11H6a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-6a2 2 0 0 0-2-2h-1"/></symbol>
+    <symbol id="i-close" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M6 6l12 12M18 6 6 18"/></symbol>
+  </svg>
+
+  <header class="topbar">
+    <div class="brand">
+      <img src="favicon.svg" alt="" width="36" height="36">
+      <div>
+        <h1 data-i18n="appTitle">Habit Tracker</h1>
+        <p class="tagline" data-i18n="tagline"></p>
+      </div>
+    </div>
+    <div class="topbar-actions">
+      <label class="lang-picker">
+        <svg class="icon" aria-hidden="true"><use href="#i-globe"/></svg>
+        <span class="sr-only" data-i18n="language">Language</span>
+        <select id="lang"></select>
+      </label>
+      <button type="button" id="btnSettings" class="icon-btn" data-i18n-title="settings" data-i18n-aria="settings">
+        <svg class="icon" aria-hidden="true"><use href="#i-gear"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <main class="layout">
+    <aside class="side">
+      <form id="mainForm" class="card fields" autocomplete="off" onsubmit="return false">
+        <div class="row">
+          <label class="field grow">
+            <span data-i18n="month">Month</span>
+            <select id="month"></select>
+          </label>
+          <label class="field year">
+            <span data-i18n="year">Year</span>
+            <input id="year" type="number" inputmode="numeric" min="1900" max="2999" step="1">
+          </label>
+        </div>
+        <div class="field">
+          <span id="linesLabel" data-i18n="lines">Habit lines</span>
+          <div class="stepper" role="group" aria-labelledby="linesLabel">
+            <button type="button" class="step" data-step="-1" aria-label="−">−</button>
+            <input id="lines" type="number" inputmode="numeric" min="1" max="20" aria-labelledby="linesLabel">
+            <button type="button" class="step" data-step="1" aria-label="+">+</button>
+          </div>
+        </div>
+        <label class="field">
+          <span data-i18n="name">Name</span>
+          <input id="name" type="text" maxlength="80" data-i18n-placeholder="namePlaceholder" autocomplete="given-name">
+        </label>
+        <label class="field">
+          <span data-i18n="quote">Quote</span>
+          <textarea id="quote" rows="4" maxlength="400"></textarea>
+        </label>
+      </form>
+
+      <div class="actions">
+        <label class="format">
+          <span class="sr-only" data-i18n="format">Format</span>
+          <select id="format">
+            <option value="pdf" data-i18n="fmtPdf">PDF</option>
+            <option value="png" data-i18n="fmtPng">PNG</option>
+            <option value="svg" data-i18n="fmtSvg">SVG</option>
+          </select>
+        </label>
+        <div class="buttons">
+          <button type="button" id="btnDownload" class="btn primary">
+            <svg class="icon" aria-hidden="true"><use href="#i-download"/></svg>
+            <span data-i18n="download">Download</span>
+          </button>
+          <button type="button" id="btnShare" class="btn" hidden>
+            <svg class="icon" aria-hidden="true"><use href="#i-share"/></svg>
+            <span data-i18n="share">Share</span>
+          </button>
+        </div>
+      </div>
+      <p id="status" class="status" role="status" aria-live="polite"></p>
+    </aside>
+
+    <section class="preview-wrap" aria-labelledby="previewTitle">
+      <h2 id="previewTitle" class="sr-only" data-i18n="preview">Preview</h2>
+      <div id="preview" class="paper"></div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <span data-i18n="privacy"></span>
+    <a id="sourceLink" href="#" target="_blank" rel="noopener" data-i18n="sourceCode">Source code</a>
+  </footer>
+
+  <dialog id="settingsDialog" class="sheet-dialog" aria-labelledby="settingsTitle">
+    <div class="dialog-head">
+      <h2 id="settingsTitle" data-i18n="settings">Settings</h2>
+      <button type="button" class="icon-btn" data-close data-i18n-aria="close" data-i18n-title="close">
+        <svg class="icon" aria-hidden="true"><use href="#i-close"/></svg>
+      </button>
+    </div>
+    <div class="tabs" role="tablist">
+      <button type="button" role="tab" id="tab-habits" aria-controls="panel-habits" aria-selected="true" data-i18n="tabHabits">Habits</button>
+      <button type="button" role="tab" id="tab-texts" aria-controls="panel-texts" aria-selected="false" tabindex="-1" data-i18n="tabTexts">Labels</button>
+      <button type="button" role="tab" id="tab-page" aria-controls="panel-page" aria-selected="false" tabindex="-1" data-i18n="tabPage">Page</button>
+    </div>
+    <div class="dialog-body">
+      <section role="tabpanel" id="panel-habits" aria-labelledby="tab-habits">
+        <p class="hint" data-i18n="habitsHint"></p>
+        <div class="field">
+          <span id="lines2Label" data-i18n="lines">Habit lines</span>
+          <div class="stepper" role="group" aria-labelledby="lines2Label">
+            <button type="button" class="step" data-step="-1" aria-label="−">−</button>
+            <input id="lines2" type="number" inputmode="numeric" min="1" max="20" aria-labelledby="lines2Label">
+            <button type="button" class="step" data-step="1" aria-label="+">+</button>
+          </div>
+        </div>
+        <ol id="habitList" class="habit-list"></ol>
+      </section>
+
+      <section role="tabpanel" id="panel-texts" aria-labelledby="tab-texts" hidden>
+        <label class="field"><span data-i18n="title1"></span><input type="text" data-text="title1" maxlength="80"></label>
+        <label class="field"><span data-i18n="title2"></span><input type="text" data-text="title2" maxlength="80"></label>
+        <p class="hint" data-i18n="placeholdersHint"></p>
+        <label class="field"><span data-i18n="habitsHeader"></span><input type="text" data-text="habitsHeader" maxlength="60"></label>
+        <label class="field"><span data-i18n="monthLabel"></span><input type="text" data-text="monthLabel" maxlength="60"></label>
+        <label class="field"><span data-i18n="box1"></span><input type="text" data-text="box1" maxlength="60"></label>
+        <label class="field"><span data-i18n="box2"></span><input type="text" data-text="box2" maxlength="60"></label>
+        <label class="field"><span data-i18n="author"></span><input type="text" data-text="author" maxlength="80"></label>
+        <button type="button" id="btnResetTexts" class="btn subtle" data-i18n="resetTexts"></button>
+      </section>
+
+      <section role="tabpanel" id="panel-page" aria-labelledby="tab-page" hidden>
+        <label class="field"><span data-i18n="pageSize"></span><select id="pageSize"></select></label>
+        <fieldset class="field segmented">
+          <legend data-i18n="orientation"></legend>
+          <label><input type="radio" name="orientation" value="landscape"><span data-i18n="landscape"></span></label>
+          <label><input type="radio" name="orientation" value="portrait"><span data-i18n="portrait"></span></label>
+        </fieldset>
+        <label class="field">
+          <span><span data-i18n="sweep"></span> <output id="sweepOut"></output></span>
+          <input id="sweep" type="range" min="180" max="270" step="15">
+        </label>
+        <div class="row">
+          <label class="field color grow"><span data-i18n="lineColor"></span><input id="lineColor" type="color"></label>
+          <label class="field color grow"><span data-i18n="bgColor"></span><input id="bgColor" type="color"></label>
+        </div>
+        <label class="field"><span data-i18n="resolution"></span>
+          <select id="dpi">
+            <option value="150">150 dpi</option>
+            <option value="300">300 dpi</option>
+            <option value="600">600 dpi</option>
+          </select>
+        </label>
+      </section>
+    </div>
+    <div class="dialog-foot">
+      <button type="button" class="btn primary" data-close data-i18n="close">Close</button>
+    </div>
+  </dialog>
+
+  <script src="js/config.js"></script>
+  <script src="js/i18n.js"></script>
+  <script src="js/renderer.js"></script>
+  <script src="js/pdf.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
