@@ -67,7 +67,6 @@
         bgColor: 'Background',
         resolution: 'Resolution (PNG and PDF)',
         close: 'Close',
-        sourceCode: 'Source code',
         privacy: 'Runs entirely in your browser — nothing is uploaded.',
       },
       sheet: {
@@ -132,7 +131,6 @@
         bgColor: 'Fondo',
         resolution: 'Resolución (PNG y PDF)',
         close: 'Cerrar',
-        sourceCode: 'Código fuente',
         privacy: 'Funciona completamente en tu navegador: no se sube nada.',
       },
       sheet: {
@@ -197,7 +195,6 @@
         bgColor: 'Fundo',
         resolution: 'Resolução (PNG e PDF)',
         close: 'Fechar',
-        sourceCode: 'Código-fonte',
         privacy: 'Funciona inteiramente no seu navegador — nada é enviado.',
       },
       sheet: {
@@ -259,7 +256,6 @@
         bgColor: 'Achtergrond',
         resolution: 'Resolutie (PNG en PDF)',
         close: 'Sluiten',
-        sourceCode: 'Broncode',
         privacy: 'Werkt volledig in je browser — er wordt niets geüpload.',
       },
       sheet: {
@@ -321,7 +317,6 @@
         bgColor: '背景',
         resolution: '分辨率（PNG 和 PDF）',
         close: '关闭',
-        sourceCode: '源代码',
         privacy: '完全在浏览器中运行，不会上传任何内容。',
       },
       sheet: {
@@ -383,7 +378,6 @@
         bgColor: 'पृष्ठभूमि',
         resolution: 'रिज़ॉल्यूशन (PNG और PDF)',
         close: 'बंद करें',
-        sourceCode: 'सोर्स कोड',
         privacy: 'पूरी तरह आपके ब्राउज़र में चलता है — कुछ भी अपलोड नहीं होता।',
       },
       sheet: {
@@ -446,7 +440,6 @@
         bgColor: 'الخلفية',
         resolution: 'الدقة (PNG وPDF)',
         close: 'إغلاق',
-        sourceCode: 'الشيفرة المصدرية',
         privacy: 'يعمل بالكامل في متصفحك، ولا يُرفع أي شيء.',
       },
       sheet: {
@@ -511,7 +504,6 @@
         bgColor: 'Fond',
         resolution: 'Résolution (PNG et PDF)',
         close: 'Fermer',
-        sourceCode: 'Code source',
         privacy: 'Fonctionne entièrement dans votre navigateur — rien n’est envoyé.',
       },
       sheet: {
@@ -576,7 +568,6 @@
         bgColor: 'Sfondo',
         resolution: 'Risoluzione (PNG e PDF)',
         close: 'Chiudi',
-        sourceCode: 'Codice sorgente',
         privacy: 'Funziona interamente nel tuo browser: non viene caricato nulla.',
       },
       sheet: {
@@ -641,7 +632,6 @@
         bgColor: 'Hintergrund',
         resolution: 'Auflösung (PNG und PDF)',
         close: 'Schließen',
-        sourceCode: 'Quellcode',
         privacy: 'Läuft komplett in deinem Browser – nichts wird hochgeladen.',
       },
       sheet: {
@@ -706,7 +696,6 @@
         bgColor: 'Tło',
         resolution: 'Rozdzielczość (PNG i PDF)',
         close: 'Zamknij',
-        sourceCode: 'Kod źródłowy',
         privacy: 'Działa w całości w przeglądarce — nic nie jest wysyłane.',
       },
       sheet: {
@@ -771,7 +760,6 @@
         bgColor: 'Тло',
         resolution: 'Роздільна здатність (PNG і PDF)',
         close: 'Закрити',
-        sourceCode: 'Вихідний код',
         privacy: 'Працює повністю у вашому браузері — нічого не завантажується на сервер.',
       },
       sheet: {
@@ -836,7 +824,6 @@
         bgColor: 'Fundal',
         resolution: 'Rezoluție (PNG și PDF)',
         close: 'Închide',
-        sourceCode: 'Cod sursă',
         privacy: 'Funcționează în întregime în browser — nu se încarcă nimic.',
       },
       sheet: {
@@ -898,7 +885,6 @@
         bgColor: 'পটভূমি',
         resolution: 'রেজোলিউশন (PNG ও PDF)',
         close: 'বন্ধ করুন',
-        sourceCode: 'সোর্স কোড',
         privacy: 'সম্পূর্ণভাবে আপনার ব্রাউজারে চলে — কিছুই আপলোড হয় না।',
       },
       sheet: {
@@ -960,7 +946,6 @@
         bgColor: 'Фон',
         resolution: 'Разрешение (PNG и PDF)',
         close: 'Закрыть',
-        sourceCode: 'Исходный код',
         privacy: 'Работает полностью в браузере — ничего не загружается на сервер.',
       },
       sheet: {
@@ -1023,7 +1008,6 @@
         bgColor: 'پس منظر',
         resolution: 'ریزولوشن (PNG اور PDF)',
         close: 'بند کریں',
-        sourceCode: 'سورس کوڈ',
         privacy: 'مکمل طور پر آپ کے براؤزر میں چلتا ہے — کچھ بھی اپ لوڈ نہیں ہوتا۔',
       },
       sheet: {

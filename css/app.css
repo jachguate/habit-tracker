@@ -261,7 +261,6 @@ input::placeholder, textarea::placeholder { color: var(--muted); opacity: 0.8; }
   font-size: 0.85rem;
   text-align: center;
 }
-.footer a { color: var(--accent); }
 
 /* ---------- settings dialog (side sheet, keeps the preview visible) ---------- */
 

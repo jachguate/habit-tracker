@@ -534,9 +534,6 @@
       $('btnShare').addEventListener('click', onShare);
     }
 
-    const source = $('sourceLink');
-    source.href = HT.config.sourceUrl;
-
     applyLanguage();
     render();
   }

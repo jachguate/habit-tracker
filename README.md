@@ -34,7 +34,8 @@ printable radial habit tracker for any month. Everything runs in the browser; no
 
 Copy the folder contents to the root of the repository (or a `docs/` folder) and enable GitHub Pages
 for that branch/folder. `.nojekyll` makes Pages serve the files as they are. Then edit
-`js/config.js` (`sourceUrl` and `sourceLabel`) with the published or short URL.
+`js/config.js` (`sourceUrl` and `sourceLabel`) if the printed URL (currently
+`https://tinyurl.com/radial-habits`) ever changes.
 
 ## Running locally
 
